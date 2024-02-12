@@ -34,11 +34,16 @@ Open a terminal and set the working directory to where the Dockerfile is
 
 Run `docker build . -t innoview` to create the docker image
 
-Run `docker run -p 4200:4200 innoview` to make a dev server. 
+Run `docker run -p 4200:4200 innoview` to make a dev server
+
 OR
+
 Run ` docker compose up -d` to run the compose file to make a dev server
+
 
 Navigate to `http://localhost:4200/`
 
+
 To shut down the docker container, go to the docker hub, go to the containers tad, click stop on the container you made
+
 To shut down a docker compose, run ` docker compose down`
