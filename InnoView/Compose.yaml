@@ -1,0 +1,6 @@
+services:
+  web:
+    image: innoview
+    ports:
+      - 4200:4200
+    
