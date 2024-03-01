@@ -1,10 +1,12 @@
 FROM node:20-alpine
 ENV appName = Innoview
 RUN npm install -g @angular/cli
+#RUN npm install mongoose
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN ng build
+WORKDIR /app/backend
 EXPOSE 4200
-CMD ["ng","serve","--host", "0.0.0.0"]
+CMD ["node","index.js"]
