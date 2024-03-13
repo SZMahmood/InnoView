@@ -1,0 +1,214 @@
+<head>
+ 
+    <style>
+    body, html {
+        height: 100%;
+    }
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+ background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../assets/images/about/about-3.png");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+    </style>
+</head>
+ 
+<body>
+    <div class="hero-image">
+ 
+        <!-- background image -->
+        <img class="hero-image center" src="../../assets/images/about/about-3.png">
+        
+        <!-- title and tag line with button -->
+        <div class="hero-text">
+            <h1>About Us</h1>
+            <a class="main-btn mt-25" routerLink="/login">Make Account</a>
+        </div>
+    </div>
+</body>
+
+    <!--====== ABOUT PART START ======-->
+
+    <section id="about" class="about-area pt-80 pb-130">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-15">
+                    <div class="about-content mt-45">
+                        <h3 class="about-title">About Us</h3>
+                        <p class="mt-30">Welcome to InnoView, where we revolutionize the way you store and share digital evidence securely in the cloud. Our mission is to empower individuals and organizations by providing a cutting-edge platform for the seamless management of digital evidence, ensuring trust and integrity in every piece of information.
+                            <br><br>We are a dedicated team of professionals passionate about leveraging technology to enhance transparency and accountability. With an interest in digital forensics, cloud computing, and software development, we have crafted a robust solution tailored to meet the evolving needs of investigators, law enforcement, legal professionals, and businesses.
+                        </p>
+                        <br><br>
+                        <h4 class="about-welcome">Our Vision</h4>
+                        <p class="mt-30">We envision a world where digital evidence is effortlessly managed, shared, and accessed, fostering a foundation of trust and reliability. Through innovation and continuous improvement, we strive to be at the forefront of digital evidence management, setting the standard for security, accessibility, and collaboration.</p>
+                        <br><br>
+                        <h4 class="about-welcome">Join Us in Building Trust</h4>
+                        <p class="mt-30">Whether you're an investigator, legal professional, or business owner, InnoView is your partner in building trust through reliable digital evidence management. Join us on this journey towards a more secure and transparent future.
+                            <br><br>
+                            <a color="#00cc99" routerLink="/login">Sign up now</a> or <a color="#00cc99" href="mailto:sy.mahmood@ufl.edu">Contact us</a> to explore the full potential of digital evidence management with InnoView.
+                        </p>
+                    </div> <!-- about content -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== ABOUT PART ENDS ======-->
+    <!--====== TEAM PART START ======-->
+
+    <section id="team" class="team-area pt-125 pb-130 gray-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center pb-20">
+                        <h5 class="sub-title mb-15">Meet The Team</h5>
+                        <h2 class="title">Our Expert Designers</h2>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
+                        <div class="team-image">
+                            <img src="assets/images/team/team-1.jpg" alt="Team">
+                        </div>
+                        <div class="team-content">
+                            <h4 class="team-name"><a href="#">Syeda Zahra Mahmood</a></h4>
+                            <span class="sub-title">Front-end Developer</span>
+                            <ul class="social mt-25">
+                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
+                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">
+                        <div class="team-image">
+                            <img src="assets/images/team/team-2.jpg" alt="Team">
+                        </div>
+                        <div class="team-content">
+                            <h4 class="team-name"><a href="#">Zachery Melson</a></h4>
+                            <span class="sub-title">Back-end Developer</span>
+                            <ul class="social mt-25">
+                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
+                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-team text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                        <div class="team-image">
+                            <img src="assets/images/team/team-3.jpg" alt="Team">
+                        </div>
+                        <div class="team-content">
+                            <h4 class="team-name"><a href="#">William Liu</a></h4>
+                            <span class="sub-title">Database Expert</span>
+                            <ul class="social mt-25">
+                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-twitter-original"></i></a></li>
+                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== TEAM PART ENDS ======-->
+
+        <!--====== CONTACT PART START ======-->
+
+        <section id="contact" class="contact-area pt-125 pb-130 gray-bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title text-center pb-20">
+                            <h5 class="sub-title mb-15">Contact us</h5>
+                            <h2 class="title">Get In touch</h2>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="contact-form">
+                            <form id="contact-form" action="assets/contact.php" method="post" data-toggle="validator">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="name" placeholder="Your Name" data-error="Name is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- single form -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-group">
+                                            <input type="email" name="email" placeholder="Your Email" data-error="Valid email is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- single form -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="subject" placeholder="Subject" data-error="Subject is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- single form -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="phone" placeholder="Phone" data-error="Phone is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- single form -->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-form form-group">
+                                            <textarea placeholder="Your Mesaage" name="message" data-error="Please,leave us a message." required="required"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- single form -->
+                                    </div>
+                                    <p class="form-message"></p>
+                                    <div class="col-md-12">
+                                        <div class="single-form form-group text-center">
+                                            <button type="submit" class="main-btn">send message</button>
+                                        </div> <!-- single form -->
+                                    </div>
+                                </div> <!-- row -->
+                            </form>
+                            
+                        </div> <!-- row -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </section>
+    
+        <!--====== CONTACT PART ENDS ======-->
