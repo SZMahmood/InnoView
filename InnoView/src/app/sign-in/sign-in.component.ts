@@ -42,7 +42,7 @@ export class SignInComponent {
       if(isUserPresent != undefined) {
         alert("User Found...");
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/landing');
       } else {
         alert("No User Found")
       }
