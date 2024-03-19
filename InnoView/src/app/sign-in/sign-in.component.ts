@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import * as mongodb from "mongodb";
 
 @Component({
   selector: 'app-sign-in',
@@ -71,4 +72,10 @@ export class LoginModel  {
     this.email = ""; 
     this.password= ""
   }
+}
+
+export interface LoginMongo {
+  username: string;
+  password: string;
+  _id?: mongodb.ObjectId;
 }
