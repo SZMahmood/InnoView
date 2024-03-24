@@ -5,6 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -24,14 +25,25 @@ const routes: Routes = [
     component: SignInComponent
   },
   {
-    path: 'landing',
-    component: LandingComponent
-  },
-  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home'
   },
+  {
+    path:'landing',
+    component: LandingComponent,
+    children: [
+      {
+        path:'dashboard',
+        component:DashboardComponent
+      }
+    ]
+  },
+  {
+    path: 'landing',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
