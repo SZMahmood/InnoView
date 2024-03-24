@@ -3,4 +3,5 @@ services:
     image: innoview
     ports:
       - 4200:4200
+      - 5050:5050
     
