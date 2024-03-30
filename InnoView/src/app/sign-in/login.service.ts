@@ -12,15 +12,17 @@ export class LoginService {
  
   constructor(private httpClient: HttpClient) { }
 
-  private refreshLogins() {
+  private async refreshLogins() {
     this.httpClient.get<Login[]>(`${this.url}/login`)
       .subscribe(logins => {
         this.logins$.set(logins);
       });
   }
 
-  getLogins() {
+  //TODO: Remove async and/or alert once sign-in component fixed
+  async getLogins() {
     this.refreshLogins();
+    alert("Fetching info from database...");
     return this.logins$();
   }
 

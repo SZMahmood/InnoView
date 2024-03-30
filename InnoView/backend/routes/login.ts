@@ -16,7 +16,7 @@ loginRouter.get("/", async (_req, res) => {
 });
 
 //Get single login info from MongoDB ID
-loginRouter.get("/:id", async (req, res) => {
+/*loginRouter.get("/:id", async (req, res) => {
   try {
       const id = req?.params?.id;
       const query = { _id: new ObjectId(id) };
@@ -30,7 +30,7 @@ loginRouter.get("/:id", async (req, res) => {
   } catch (error) {
       res.status(404).send(`Failed to find login info associated with ID ${req?.params?.id}`);
   }
-});
+});*/
 
 //Add new login
 loginRouter.post("/", async (req, res) => {
@@ -50,7 +50,7 @@ loginRouter.post("/", async (req, res) => {
 });
 
 //Update login info associated with ID
-loginRouter.put("/:id", async (req, res) => {
+/*loginRouter.put("/:id", async (req, res) => {
   try {
       const id = req?.params?.id;
       const login = req.body;
@@ -69,10 +69,10 @@ loginRouter.put("/:id", async (req, res) => {
       console.error(message);
       res.status(400).send(message);
   }
-});
+});*/
 
 //Delete login associated with particular ID
-loginRouter.delete("/:id", async (req, res) => {
+/*loginRouter.delete("/:id", async (req, res) => {
   try {
       const id = req?.params?.id;
       const query = { _id: new ObjectId(id) };
@@ -90,4 +90,4 @@ loginRouter.delete("/:id", async (req, res) => {
       console.error(message);
       res.status(400).send(message);
   }
-});
+});*/
