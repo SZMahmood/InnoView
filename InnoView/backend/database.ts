@@ -1,8 +1,8 @@
 import * as mongodb from "mongodb";
-import { LoginMongo } from "../src/app/sign-in/sign-in.component";
+import { LoginModel } from "../src/app/sign-in/sign-in.component";
 
 export const collections: {
-  logins?: mongodb.Collection<LoginMongo>;
+  logins?: mongodb.Collection<LoginModel>;
 } = {};
 
 export async function connectToDatabase(uri: string) {
@@ -12,7 +12,7 @@ export async function connectToDatabase(uri: string) {
   const db = client.db("InnoViewDB");
   await applySchemaValidation(db);
 
-  const loginCollection = db.collection<LoginMongo>("login");
+  const loginCollection = db.collection<LoginModel>("login");
   collections.logins = loginCollection;
 }
 
@@ -53,6 +53,3 @@ async function applySchemaValidation(db: mongodb.Db) {
     }
   });
 }
-
-
-const uri = "mongodb+srv://symahmood:Project_Database%23123@data.n8qolos.mongodb.net/?retryWrites=true&w=majority";

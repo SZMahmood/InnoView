@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import * as mongodb from "mongodb";
+import { Login } from './login';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,7 @@ export class SignInComponent {
   signUpObj: SignUpModel  = new SignUpModel();
   loginObj: LoginModel  = new LoginModel();
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private loginService: LoginService){  }
 
 
   onRegister() {
@@ -24,11 +25,29 @@ export class SignInComponent {
     if(localUser != null) {
       const users =  JSON.parse(localUser);
       users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
+      localStorage.setItem('angular17users', JSON.stringify(users));
+      this.loginService.createLogin(this.signUpObj).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/landing');
+        },
+        error: (error) => {
+          alert('Failed to register new account');
+          console.error(error);
+        },
+      });
     } else {
       const users = [];
       users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
+      localStorage.setItem('angular17users', JSON.stringify(users));
+      this.loginService.createLogin(this.signUpObj).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/landing');
+        },
+        error: (error) => {
+          alert('Failed to register new account');
+          console.error(error);
+        },
+      });
     }
     alert('Registration Success')
   }
@@ -52,10 +71,11 @@ export class SignInComponent {
 
 }
 
-export class SignUpModel  {
+export class SignUpModel implements Login {
   name: string;
   email: string;
   password: string;
+  _id?: string;
 
   constructor() {
     this.email = "";
@@ -67,15 +87,10 @@ export class SignUpModel  {
 export class LoginModel  { 
   email: string;
   password: string;
+  _id?: string;
 
   constructor() {
     this.email = ""; 
     this.password= ""
   }
-}
-
-export interface LoginMongo {
-  username: string;
-  password: string;
-  _id?: mongodb.ObjectId;
 }
