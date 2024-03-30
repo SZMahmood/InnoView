@@ -20,7 +20,7 @@ export class SignInComponent {
 
 
   onRegister() {
-    debugger;
+    //debugger;
     const localUser = localStorage.getItem('angular17users');
     if(localUser != null) {
       const users =  JSON.parse(localUser);
@@ -53,7 +53,7 @@ export class SignInComponent {
   }
 
   onLogin() {
-    debugger;
+    //debugger;
     const localUsers =  localStorage.getItem('angular17users');
     if(localUsers != null) {
       const users =  JSON.parse(localUsers);

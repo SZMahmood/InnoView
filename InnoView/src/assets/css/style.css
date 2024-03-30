@@ -1226,6 +1226,7 @@ p.form-message.error {
 
 .footer-area{
   background-color: #646464;
+  z-index: 99;
 }
 .footer-logo a img {
   width: 140px; }
