@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Login } from './login';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,47 +16,46 @@ export class SignInComponent {
   signUpObj: SignUpModel  = new SignUpModel();
   loginObj: LoginModel  = new LoginModel();
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private loginService: LoginService){  }
 
 
   onRegister() {
-    //debugger;
-    const localUser = localStorage.getItem('angular17users');
-    if(localUser != null) {
-      const users =  JSON.parse(localUser);
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
-    } else {
-      const users = [];
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
-    }
-    alert('Registration Success')
+    this.loginService.createLogin(this.signUpObj).subscribe({
+      next: () => {
+        localStorage.setItem('loggedUser', JSON.stringify(this.signUpObj));
+        alert("Registration successful!");
+        this.router.navigateByUrl('/landing');
+      },
+      error: (error) => {
+        alert('Failed to register new account');
+        console.error(error);
+      },
+    });
   }
 
-  onLogin() {
-    //debugger;
-    const localUsers =  localStorage.getItem('angular17users');
-    if(localUsers != null) {
-      const users =  JSON.parse(localUsers);
-
-      const isUserPresent =  users.find( (user:SignUpModel)=> user.email == this.loginObj.email && user.password == this.loginObj.password);
-      if(isUserPresent != undefined) {
-        alert("User Found...");
-        localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
-        this.router.navigateByUrl('/landing');
-      } else {
-        alert("No User Found")
+  //TODO: Fix asynchronous issues. Only works currently because getLogins() makes an alert.
+  async onLogin() {
+    this.loginService.getLogins().then((dbUsers) => {
+      for (const user of dbUsers) {
+        if (user.email == this.loginObj.email && user.password == this.loginObj.password) {
+          localStorage.setItem('loggedUser', JSON.stringify(user));
+          this.router.navigateByUrl('/landing');
+          return;
+        }
       }
-    }
+      alert ("Credentials not found in database.");
+    }, function(error) {
+      alert("Unable to access database");
+    });
   }
 
 }
 
-export class SignUpModel  {
+export class SignUpModel implements Login {
   name: string;
   email: string;
   password: string;
+  _id?: string;
 
   constructor() {
     this.email = "";
@@ -66,6 +67,7 @@ export class SignUpModel  {
 export class LoginModel  { 
   email: string;
   password: string;
+  _id?: string;
 
   constructor() {
     this.email = ""; 
