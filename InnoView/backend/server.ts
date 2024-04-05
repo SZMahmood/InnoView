@@ -31,3 +31,5 @@ connectToDatabase(ATLAS_URI)
     });
   })
   .catch((error) => console.error(error));
+
+  export{loginRouter, connectToDatabase}
