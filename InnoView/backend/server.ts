@@ -4,6 +4,10 @@ import cors from "cors";
 import { connectToDatabase } from "./database";
 import { loginRouter } from "./routes/login";
 
+
+
+//import { documentRouter } from "./routes/document"
+
 //TODO: Store uri in environment variable
 // Load environment variables from the .env file
 /*dotenv.config();
@@ -24,6 +28,7 @@ connectToDatabase(ATLAS_URI)
     app.use(cors());
 
     app.use("/login", loginRouter);
+    //app.use("/document", docRouter)
 
     // start the Express server
     app.listen(5200, () => {
