@@ -12,7 +12,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
   imports: [CommonModule,
     NgxFileDropModule ],
   templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.css',
+  styleUrl: '../../assets/css/style.css',
 })
 export class FileUploadComponent{
   public files: NgxFileDropEntry[] = [];
