@@ -18,8 +18,29 @@ export class SignInComponent {
 
   constructor(private router: Router, private loginService: LoginService){  }
 
+verifyCredentials(name: string, email: string, password: string) {
+  if (name == "" || email == "" || password == "") {
+    alert("All fields are required.");
+    return false;
+  }
+  if (password.length < 5) {
+    alert("Minimum password length is 5 characters.");
+    return false;
+  }
+  //Loose email checking, primarily ensures no escape sequence characters
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!email.match(regex)) {
+    alert("Email does not meet our formatting guidelines. Please ensure you are not using any special characters.");
+    return false;
+  }
+  return true;
+}
 
   onRegister() {
+    const validCred = this.verifyCredentials(this.signUpObj.name, this.signUpObj.email, this.signUpObj.password);
+    if (validCred == false) {
+      return;
+    }
     this.loginService.createLogin(this.signUpObj).subscribe({
       next: () => {
         localStorage.setItem('loggedUser', JSON.stringify(this.signUpObj));
@@ -35,6 +56,10 @@ export class SignInComponent {
 
   //TODO: Fix asynchronous issues. Only works currently because getLogins() makes an alert.
   async onLogin() {
+    const validCred = this.verifyCredentials("filler", this.loginObj.email, this.loginObj.password);
+    if (validCred == false) {
+      return;
+    }
     this.loginService.getLogins().then((dbUsers) => {
       for (const user of dbUsers) {
         if (user.email == this.loginObj.email && user.password == this.loginObj.password) {

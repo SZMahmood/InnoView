@@ -33,17 +33,17 @@ async function applySchemaValidation(db: mongodb.Db) {
               email: {
                   bsonType: "string",
                   description: "'position' is required and is a string",
-                  //minLength: 5
               },
               password: {
                   bsonType: "string",
                   description: "'password' is required and is a string",
+                  minLength: 5
               },
           },
       },
   };
 
-  //Apply schema to the collection, creating collection if it doesn't exist
+  //Apply schema to the login collection
   await db.command({
     collMod: "login",
     validator: jsonSchema
