@@ -14,6 +14,8 @@ import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { FileManagerModel, FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
+import { FileSystemManagerComponent } from './file-system-manager/file-system-manager.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     FormsModule,
     ReactiveFormsModule,
     FileUploadComponent,
-    NgxFileDropModule
+    NgxFileDropModule,
+    FileManagerModule,
+    FileSystemManagerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
