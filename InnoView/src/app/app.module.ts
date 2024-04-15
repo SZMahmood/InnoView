@@ -12,6 +12,8 @@ import { TutorialsComponent } from './tutorials/tutorials.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadComponent,
+    NgxFileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
