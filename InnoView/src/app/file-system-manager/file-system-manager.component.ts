@@ -14,7 +14,8 @@ export class FileSystemManagerComponent {
   public ajaxSettings!: object;
   public toolbarSettings!: object;
   public contextMenuSettings!: object;
-  public hostUrl: string = 'https://ej2-nodejs-service.azurewebsites.net/';
+  //public hostUrl: string = 'https://ej2-nodejs-service.azurewebsites.net/';
+  public hostUrl: string = 'http://localhost:8090/';
   public ngOnInit(): void {
       this.ajaxSettings = {
           url: this.hostUrl,
