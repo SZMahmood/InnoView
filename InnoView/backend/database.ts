@@ -12,13 +12,13 @@ export async function connectToDatabase(uri: string) {
 
   const db = client.db("InnoViewDB");
   await applyLoginSchemaValidation(db);
-  await applyDocSchemaValidation(db);
 
   const loginCollection = db.collection<LoginModel>("login");
   //const docCollection = db.collection<DocumentModel>("documents");
 
   collections.logins = loginCollection;
   //collections.documents = docCollection;
+  return db;
 }
 
 //Update collection with JSON schema validation so documents match the shape of our login model
@@ -64,13 +64,9 @@ async function applyDocSchemaValidation(db: mongodb.Db) {
   const jsonSchema = {
       $jsonSchema: {
           bsonType: "object",
-          required: ["fileName", "authorID", "viewerIDs", "editorIDs", "fileData"],
+          required: ["authorID", "viewerIDs", "editorIDs"],
           additionalProperties: false,
           properties: {
-              _fileName: {
-                  bsonType: "string",
-                  description: "'fileName' is required and is a string",
-              },
               authorID: {
                   bsonType: "string",
                   description: "'author' is required and is a string",
@@ -82,10 +78,6 @@ async function applyDocSchemaValidation(db: mongodb.Db) {
               editorIDs: {
                 bsonType: "array",
                 description: "'editors' is required and is an array, may be empty",
-              },
-              fileData: {
-                bsonType: "object",
-                description: "'fileData' is required and is an object"
               }
           },
       },
@@ -100,19 +92,4 @@ async function applyDocSchemaValidation(db: mongodb.Db) {
       await db.createCollection("documents", {validator: jsonSchema});
     }
   });
-}
-
-class DocumentModel
-{
-  fileName?: string;
-  authorID?: string;
-  viewerIDs: Array<string>;
-  editorIDs: Array<string>;
-  fileData?: Object;
-
-  constructor()
-  {
-    this.viewerIDs = new Array<string>();
-    this.editorIDs = new Array<string>();
-  }
 }
