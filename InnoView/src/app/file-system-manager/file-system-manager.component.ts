@@ -14,8 +14,8 @@ export class FileSystemManagerComponent {
   public ajaxSettings!: object;
   public toolbarSettings!: object;
   public contextMenuSettings!: object;
-  //public hostUrl: string = 'https://ej2-nodejs-service.azurewebsites.net/';
-  public hostUrl: string = 'http://localhost:8090/';
+  public hostUrl: string = 'https://ej2-nodejs-service.azurewebsites.net/';
+  //public hostUrl: string = 'http://localhost:8090/';
   public ngOnInit(): void {
       this.ajaxSettings = {
           url: this.hostUrl,
@@ -23,7 +23,7 @@ export class FileSystemManagerComponent {
           uploadUrl: this.hostUrl + 'Upload',
           downloadUrl: this.hostUrl + 'Download'
       };
-      this.toolbarSettings = { items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details',] };
+      this.toolbarSettings = { items: ['NewFolder', 'Upload', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details',] };
       this.contextMenuSettings = {
           layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll'],
           visible: true
