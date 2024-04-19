@@ -54,23 +54,24 @@ verifyCredentials(name: string, email: string, password: string) {
     });
   }
 
-  //TODO: Fix asynchronous issues. Only works currently because getLogins() makes an alert.
+  //TODO: Use JWT authorization and protect landing route
   async onLogin() {
-    const validCred = this.verifyCredentials("filler", this.loginObj.email, this.loginObj.password);
+    const email = this.loginObj.email;
+    const password = this.loginObj.password;
+    const validCred = this.verifyCredentials("filler", email, password);
     if (validCred == false) {
       return;
     }
-    this.loginService.getLogins().then((dbUsers) => {
-      for (const user of dbUsers) {
-        if (user.email == this.loginObj.email && user.password == this.loginObj.password) {
-          localStorage.setItem('loggedUser', JSON.stringify(user));
-          this.router.navigateByUrl('/landing');
-          return;
-        }
+    this.loginService.getLoginByCreds(email, password).then((login) => {
+      if (login) {
+        const loginStr = JSON.stringify(login);
+        localStorage.setItem('loggedUser', loginStr);
+        this.router.navigateByUrl('/landing');
+        return;
       }
       alert ("Credentials not found in database.");
     }, function(error) {
-      alert("Unable to access database");
+      alert("Could not find credentials in database");
     });
   }
 
