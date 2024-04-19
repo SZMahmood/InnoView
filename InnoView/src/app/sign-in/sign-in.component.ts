@@ -23,13 +23,18 @@ verifyCredentials(name: string, email: string, password: string) {
     alert("All fields are required.");
     return false;
   }
+  const specCharRegex = /^[^<>%;$]*$/;
+  if (!name.match(specCharRegex) || !password.match(specCharRegex)) {
+    alert("Cannot use special characters: < > % ; $.");
+    return false;
+  }
   if (password.length < 5) {
     alert("Minimum password length is 5 characters.");
     return false;
   }
-  //Loose email checking, primarily ensures no escape sequence characters
-  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (!email.match(regex)) {
+  //Loose email checking, ensures no escape sequence characters but restricts some valid addresses
+  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!email.match(emailRegex)) {
     alert("Email does not meet our formatting guidelines. Please ensure you are not using any special characters.");
     return false;
   }
