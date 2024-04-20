@@ -18,21 +18,22 @@ import methodOverride from 'method-override';
 
 import {docRouter} from "./routes/document";
 
-//TODO: Store uri in environment variable
-// Load environment variables from the .env file
-/*dotenv.config();
-const { ATLAS_URI } = process.env;
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, './.env') });
+const ATLAS_URI = process.env["ATLAS_URI"];
 
 if (!ATLAS_URI) {
   console.error(
-    "No ATLAS_URI environment variable has been defined in config.env"
+    "No ATLAS_URI environment variable has been defined in .env file"
   );
   process.exit(1);
-}*/
+}
 
-const ATLAS_URI = "mongodb+srv://symahmood:Project_Database%23123@data.n8qolos.mongodb.net/?retryWrites=true&w=majority";
-
-const db = await connectToDatabase(ATLAS_URI)
+const db = await connectToDatabase(ATLAS_URI);
 
 const app = express();
 app.use(cors());
