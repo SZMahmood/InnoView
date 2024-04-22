@@ -25,9 +25,9 @@ export function docRouter(upload:Multer, url:string, db:mongodb.Db)
     {
         if(doc)
         {
-            const downloadStream = fsBucket.openDownloadStream(doc._id)
-            const localDownloadStream = fs.createWriteStream("C:\\Users\\wliu4\\Downloads\\new.pdf")
-            downloadStream.pipe(localDownloadStream);
+            //const downloadStream = fsBucket.openDownloadStream(doc._id)
+            //const localDownloadStream = fs.createWriteStream("C:\\Users\\wliu4\\Downloads\\new.pdf")
+            //downloadStream.pipe(localDownloadStream);
         }
     }
     , ()=>{});
