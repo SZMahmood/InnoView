@@ -6,6 +6,8 @@ import { TutorialsComponent } from './tutorials/tutorials.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileSystemManagerComponent } from './file-system-manager/file-system-manager.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
       {
         path:'dashboard',
         component:DashboardComponent
+      },
+      {
+        path: 'filemanager',
+        component:FileSystemManagerComponent
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent
       }
     ]
   },

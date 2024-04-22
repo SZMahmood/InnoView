@@ -9,7 +9,7 @@ export class LoginService {
   private url = 'http://localhost:5200';
   logins$ = signal<Login[]>([]);
   login$ = signal<Login>({} as Login);
- 
+  
   constructor(private httpClient: HttpClient) { }
 
   private async refreshLogins() {
