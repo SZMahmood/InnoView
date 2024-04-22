@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,12 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { FileManagerModel, FileManagerModule } from '@syncfusion/ej2-angular-filemanager';
 import { FileSystemManagerComponent } from './file-system-manager/file-system-manager.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import { FileSystemManagerComponent } from './file-system-manager/file-system-ma
     TutorialsComponent,
     HomeComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +44,16 @@ import { FileSystemManagerComponent } from './file-system-manager/file-system-ma
     FileUploadComponent,
     NgxFileDropModule,
     FileManagerModule,
-    FileSystemManagerComponent
+    FileSystemManagerComponent,
+    MaterialModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
