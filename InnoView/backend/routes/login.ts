@@ -16,21 +16,21 @@ loginRouter.get("/", async (_req, res) => {
 });
 
 //Get single login info from MongoDB ID
-/*loginRouter.get("/:id", async (req, res) => {
+loginRouter.get("/:email", async (req, res) => {
   try {
-      const id = req?.params?.id;
-      const query = { _id: new ObjectId(id) };
+      const emailParam = req?.params?.email;
+      const query = { email: emailParam };
       const login = await collections?.logins?.findOne(query);
 
       if (login) {
           res.status(200).send(login);
       } else {
-          res.status(404).send(`Failed to find login info associated with ID ${id}`);
+          res.status(404).send(`Failed to find login info associated with ID ${emailParam}`);
       }
   } catch (error) {
-      res.status(404).send(`Failed to find login info associated with ID ${req?.params?.id}`);
+      res.status(404).send(`Failed to find login info associated with ID ${req?.params?.email}`);
   }
-});*/
+});
 
 //Add new login
 loginRouter.post("/", async (req, res) => {
