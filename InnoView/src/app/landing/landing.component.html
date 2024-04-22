@@ -1,36 +1,40 @@
-<br>
+<mat-toolbar color="#00cc99" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="title">Welcome Back {{loggedUser?.name}}!</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<a class="full-width" *ngIf="isExpanded || isShowing" (click)="onProfile()">User</a>
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+			</mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" (click)="onDashboard()">Dashboard</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+			</mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" (click)="onFileManager()">File Manager</span>
+        <mat-icon mat-list-icon>folder_copy</mat-icon>
+			</mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" (click)="onLogoff()">Logout</span>
+        <mat-icon mat-list-icon (click)="onLogoff()">logout</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+    <!--<app-file-system-manager></app-file-system-manager>-->
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <span class="text-white">Hello, {{loggedUser?.name}} </span> 
-        <button class="btn btn-primary" type="button" (click)="onLogoff()">Log Off</button>
-      </form>
-    </div>
-  </nav>
-  <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-  <app-file-system-manager></app-file-system-manager>
-  <router-outlet></router-outlet>
-  <!--
-  <app-file-upload></app-file-upload>-->
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
