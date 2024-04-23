@@ -6,5 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN ng build
-EXPOSE 4200
-CMD ["ng","serve","--host", "0.0.0.0"]
+WORKDIR /app/backend
+EXPOSE 5200
+EXPOSE 5050
+CMD ["node","index.js"]

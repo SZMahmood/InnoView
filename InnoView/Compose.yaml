@@ -2,5 +2,5 @@ services:
   web:
     image: innoview
     ports:
-      - 4200:4200
-    
+      - 5200:5200
+      - 5050:5050

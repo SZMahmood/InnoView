@@ -40,6 +40,11 @@ app.use(cors());
 
 app.use("/login", loginRouter);
 
+app.use(express.static(path.join(__dirname, '../dist/inno-view/browser')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/inno-view/browser/index.html'));
+});
+
 const storage = new GridFsStorage(
 {
   url: ATLAS_URI,
