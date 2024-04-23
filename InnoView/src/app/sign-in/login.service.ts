@@ -19,10 +19,8 @@ export class LoginService {
       });
   }
 
-  //TODO: Remove async and/or alert once sign-in component fixed
-  async getLogins() {
+  getLogins() {
     this.refreshLogins();
-    alert("Fetching info from database...");
     return this.logins$();
   }
 
@@ -31,6 +29,17 @@ export class LoginService {
       this.login$.set(login);
       return this.login$();
     });
+  }
+
+  getLoginByCreds(email: string, password: string) {
+    return this.httpClient.get<Login>(`${this.url}/login/${email}`).toPromise()
+      .then(login => {
+        if (login && login.password == password) {
+          this.login$.set(login);
+          return login;
+        }
+        return undefined;        
+      });
   }
 
   createLogin(login: Login) {

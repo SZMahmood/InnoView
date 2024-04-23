@@ -1,6 +1,6 @@
 <mat-toolbar color="#00cc99" class="example-toolbar">
 	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
-	<h1 class="title">Welcome Back {{loggedUser?.email}}!</h1>
+	<h1 class="title">Welcome Back {{loggedUser?.name}}!</h1>
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
 	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
