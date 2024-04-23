@@ -6,7 +6,7 @@ export const collections: {
   documents?: mongodb.Collection<DocumentModel>;
 } = {};
 
-export async function connectToDatabase(uri: string) {
+export async function connectToDatabase(uri: string): Promise<mongodb.Db> {
   const client = new mongodb.MongoClient(uri);
   await client.connect();
 

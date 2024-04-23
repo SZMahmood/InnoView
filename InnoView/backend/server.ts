@@ -38,6 +38,12 @@ const db = await connectToDatabase(ATLAS_URI);
 const app = express();
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, '../dist/inno-view/browser')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/inno-view/browser/index.html'));
+});
+
+
 app.use("/login", loginRouter);
 
 const storage = new GridFsStorage(

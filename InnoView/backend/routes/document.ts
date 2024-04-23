@@ -21,7 +21,7 @@ export function docRouter(upload:Multer, url:string, db:mongodb.Db)
 
 
     let sFile = docFilesCollection.findOne({metadata: {test:1}})
-    sFile.then((doc)=>
+    sFile.then((doc: any)=>
     {
         if(doc)
         {

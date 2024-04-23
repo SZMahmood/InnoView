@@ -22,10 +22,11 @@
     "@syncfusion/ej2-angular-filemanager": "^25.1.39",
     "@syncfusion/ej2-filemanager-node-filesystem": "^18.1.54",
     "@syncfusion/ej2-material-theme": "~25.1.39",
-    "ngx-file-drop": "^16.0.0",
     "method-override": "^3.0.0",
-    "multer": "^1.4.2",
+    "mongodb": "^6.5.0",
+    "multer": "^1.4.4",
     "multer-gridfs-storage": "^5.0.2",
+    "ngx-file-drop": "^16.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
