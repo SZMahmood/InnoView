@@ -16,21 +16,27 @@ export function docRouter(upload:Multer, url:string, db:mongodb.Db)
 
     const docFilesCollection = db.collection("documents.files");
 
-    //const uploadStream = fsBucket.openUploadStream("documents",{"metadata": {"test" : 1}});
-    //const localUploadStream = fs.createReadStream("C:\\Users\\wliu4\\Downloads\\1811.10787.pdf");
-
-
-    let sFile = docFilesCollection.findOne({metadata: {test:1}})
-    sFile.then((doc: any)=>
+    let readDocFromMongodb = function()
     {
-        if(doc)
+        let sFile = docFilesCollection.findOne({metadata: {test:2}})
+        sFile.then((doc: any)=>
         {
-            const downloadStream = fsBucket.openDownloadStream(doc._id)
-            const localDownloadStream = fs.createWriteStream("C:\\Users\\wliu4\\Downloads\\new.pdf")
-            downloadStream.pipe(localDownloadStream);
+            if(doc)
+            {
+                const downloadStream = fsBucket.openDownloadStream(doc._id)
+                const localDownloadStream = fs.createWriteStream("C:\\Users\\wliu4\\OneDrive\\Documents\\ClassWork\\DocTest\\DocRecieve.txt")
+                downloadStream.pipe(localDownloadStream);
+            }
         }
+        , ()=>{});
     }
-    , ()=>{});
+
+    const uploadStream = fsBucket.openUploadStream("documents",{"metadata": {"test" : 2}})
+    const localUploadStream = fs.createReadStream("C:\\Users\\wliu4\\OneDrive\\Documents\\ClassWork\\DocTest\\DocSend.txt");
+    localUploadStream.pipe(uploadStream)
+    uploadStream.on("finish", readDocFromMongodb)
+
+
     
     
 

@@ -7,6 +7,6 @@ RUN npm install
 COPY . .
 RUN ng build
 WORKDIR /app/backend
-EXPOSE 4200
+EXPOSE 5200
 EXPOSE 5050
 CMD ["node","index.js"]
